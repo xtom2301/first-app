@@ -1,10 +1,32 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import Header from './components/Header';
+import ListItem from './components/ListItem';
+import uuid from 'react-native-uuid';
 
 const App = () => {
+  const [items, setItems] = useState([
+    { id: uuid.v4(), text: 'Milk' },
+    { id: uuid.v4(), text: 'Eggs' },
+    { id: uuid.v4(), text: 'Bread' },
+    { id: uuid.v4(), text: 'Juice' },
+  ]);
+
+  const deleteItem = (id) => {
+    setItems((prevItems) => {
+      return prevItems.filter((item) => item.id != id);
+    });
+  };
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Hello World</Text>
+      <Header title='Shopping List' />
+      <FlatList
+        data={items}
+        renderItem={({ item }) => (
+          <ListItem item={item} deleteItem={deleteItem} />
+        )}
+      />
     </View>
   );
 };
@@ -12,6 +34,7 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 60,
   },
 });
 
