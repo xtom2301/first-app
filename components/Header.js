@@ -1,16 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 
 const Header = ({ title }) => {
   return (
-    <View style={styles.header}>
+    <SafeAreaView style={styles.header}>
       <Text style={styles.text}>{title}</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   header: {
-    height: 60,
     padding: 15,
     backgroundColor: 'darkslateblue',
   },

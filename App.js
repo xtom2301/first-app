@@ -30,7 +30,7 @@ const App = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <Header title='Shopping List' />
       <AddItem addItem={addItem} />
       <FlatList
@@ -46,7 +46,6 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 60,
   },
 });
 

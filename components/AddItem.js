@@ -1,9 +1,9 @@
 import {
   StyleSheet,
   Text,
-  View,
   TextInput,
   TouchableOpacity,
+  View,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import { useState } from 'react';
@@ -11,16 +11,12 @@ import { useState } from 'react';
 const AddItem = ({ addItem }) => {
   const [text, setText] = useState('');
 
-  const onChange = (textValue) => {
-    setText(textValue);
-  };
-
   return (
     <View>
       <TextInput
         placeholder='Add Item...'
         style={styles.input}
-        onChangeText={onChange}
+        onChangeText={(e) => setText(e)}
       />
       <TouchableOpacity style={styles.btn} onPress={() => addItem(text)}>
         <Text style={styles.btnText}>
